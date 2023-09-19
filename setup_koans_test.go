@@ -2,7 +2,6 @@ package go_koans
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path"
 	"runtime"
@@ -57,7 +56,7 @@ func assert(o bool) {
 
 func __getRecentLine() string {
 	_, file, line, _ := runtime.Caller(2)
-	buf, _ := ioutil.ReadFile(file)
+	buf, _ := os.ReadFile(file)
 	code := strings.TrimSpace(strings.Split(string(buf), "\n")[line-1])
 	return fmt.Sprintf("%v:%d\n%s", path.Base(file), line, code)
 }
